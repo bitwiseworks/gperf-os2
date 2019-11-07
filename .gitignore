@@ -1,0 +1,14 @@
+# ignore autoreconf files
+autom4te.cache/
+doc/autom4te.cache/
+lib/autom4te.cache/
+src/autom4te.cache/
+src/config.h.in~
+tests/autom4te.cache/
+
+# ignore regenerated files from autoreconv -fvi
+configure
+doc/configure
+lib/configure
+src/configure
+tests/configure
