@@ -137,7 +137,7 @@ check-smtp:
 	./smtp
 
 # these next 5 are demos that show off the generated code
-POSTPROCESS_FOR_MINGW = LC_ALL=C tr -d '\r' | LC_ALL=C sed -e 's|[^ ]*[/\\][\\]*src[/\\][\\]*gperf[^ ]*|../src/gperf|'
+POSTPROCESS_FOR_MINGW = LC_ALL=C sed -e 's|[^ ]*[/\\][\\]*src[/\\][\\]*gperf[^ ]*|../src/gperf|' | LC_ALL=C tr -d '\r'
 check-test:
 	$(GPERF) -L C -F ', 0, 0' -j1 -i 1 -g -o -t -G -N is_reserved_word -k1,3,'$$' < $(srcdir)/c-parse.gperf | $(POSTPROCESS_FOR_MINGW) > c-parse.out
 	diff $(srcdir)/c-parse.exp c-parse.out
