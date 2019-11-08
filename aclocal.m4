@@ -15,7 +15,7 @@ AC_DEFUN(CL_PROG_INSTALL,
 AC_MSG_CHECKING(for a BSD compatible install)
 if test -z "$INSTALL"; then
 AC_CACHE_VAL(cl_cv_path_install,
-[  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+[  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_SEPARATOR"
   for ac_dir in $PATH; do
     # Account for people who put trailing slashes in PATH elements.
     case "$ac_dir/" in
@@ -23,7 +23,7 @@ AC_CACHE_VAL(cl_cv_path_install,
     *)
       # OSF1 and SCO ODT 3.0 have their own names for install.
       for ac_prog in ginstall installbsd scoinst install; do
-        if test -f $ac_dir/$ac_prog; then
+        if test -f $ac_dir/$ac_prog || test -f $ac_dir/$ac_prog.exe; then
 	  if test $ac_prog = install &&
             grep dspmsg $ac_dir/$ac_prog >/dev/null 2>&1; then
 	    # AIX install.  It has an incompatible calling convention.
